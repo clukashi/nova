@@ -1,10 +1,11 @@
+// src/components/TemplateGallery.ts
 export class TemplateGallery {
   private filters: NodeListOf<HTMLButtonElement>;
   private grid: HTMLDivElement;
 
   constructor() {
-    this.filters = document.querySelectorAll('.filter-btn');
-    this.grid = document.querySelector('.template-grid') as HTMLDivElement;
+    this.filters = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+    this.grid = document.querySelector<HTMLDivElement>('.template-grid')!;
     this.init();
   }
 
@@ -24,36 +25,38 @@ export class TemplateGallery {
   }
 
   private renderTemplates(templates: Template[]): void {
-    this.grid.innerHTML = templates.map(template => `
-      <div class="template-card" data-category="${template.category}">
-        <div class="preview-header">
-          <span class="badge">${template.optimized ? 'ATS Optimized' : ''}</span>
-          <button class="preview-btn" data-template="${template.id}">
-            👁️ Preview
-          </button>
+    this.grid.innerHTML = templates
+      .map(
+        (template) => `
+        <div class="template-card" data-category="${template.category}">
+          <div class="preview-header">
+            <span class="badge">${template.optimized ? 'ATS Optimized' : ''}</span>
+            <button class="preview-btn" data-template="${template.id}">
+              👁️ Preview
+            </button>
+          </div>
+          <img src="${template.thumbnail}" alt="${template.name}">
+          <h3>${template.name}</h3>
         </div>
-        <img src="${template.thumbnail}" alt="${template.name}">
-        <h3>${template.name}</h3>
-      </div>
-    `).join('');
+      `
+      )
+      .join('');
   }
 
   private addFilterListeners(): void {
-    this.filters.forEach(btn => {
+    this.filters.forEach((btn) => {
       btn.addEventListener('click', () => this.handleFilter(btn));
     });
   }
 
   private handleFilter(btn: HTMLButtonElement): void {
-    this.filters.forEach(b => b.classList.remove('active'));
+    this.filters.forEach((b) => b.classList.remove('active'));
     btn.classList.add('active');
     const filter = btn.dataset.filter as string;
-    
-    document.querySelectorAll('.template-card').forEach(card => {
-      const category = card.getAttribute('data-category');
-      card.style.display = filter === 'all' || category === filter 
-        ? 'block' 
-        : 'none';
+
+    document.querySelectorAll<HTMLElement>('.template-card').forEach((card) => {
+      const category = card.dataset.category;
+      card.style.display = filter === 'all' || category === filter ? 'block' : 'none';
     });
   }
 }
