@@ -6,9 +6,12 @@
   from = "/*"
   to = "/index.html"
   status = 200
+  force = true  # Ensures all paths are handled by the frontend
 
 [dev]
-  framework = "#static"
+  framework = "vite"
+  command = "vite dev"
 
 [build.environment]
   NODE_VERSION = "18"  # Specify Node.js version
+
