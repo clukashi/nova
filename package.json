@@ -2,7 +2,7 @@
   "name": "cv-nova",
   "version": "1.0.0",
   "scripts": {
-    "build": "tsc && npm run copy-assets",
+    "build": "npm install && tsc && npm run copy-assets",
     "copy-assets": "copyfiles -u 1 src/**/*.html public/**/* dist",
     "dev": "tsc-watch --onSuccess \"npm run copy-assets\"",
     "start": "serve dist"
