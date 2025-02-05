@@ -11,7 +11,8 @@
     "typescript": "^5.0.4",
     "copyfiles": "^2.4.1",
     "tsc-watch": "^6.0.0",
-    "serve": "^14.2.0"
+    "serve": "^14.2.0",
+    "@types/node": "^18.0.0"
   },
   "dependencies": {
     "@rive-app/canvas": "^2.9.0",
