@@ -11,4 +11,4 @@
   framework = "#static"
 
 [build.environment]
-  VITE_API_URL = "https://api.cvnova.com/v1"
+  NODE_VERSION = "18"  # Specify Node.js version
