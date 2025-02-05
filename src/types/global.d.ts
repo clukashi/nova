@@ -8,7 +8,29 @@ interface ImportMeta {
   env: ImportMetaEnv;
 }
 
-// Add HTMLElement dataset types
+interface Template {
+  id: string;
+  name: string;
+  category: 'tech' | 'creative' | 'executive';
+  optimized: boolean;
+  thumbnail: string;
+}
+
+interface AISuggestion {
+  id: string;
+  message: string;
+  category: 'wording' | 'metrics' | 'formatting';
+  confidence: number;
+  accepted: boolean;
+}
+
+interface CVData {
+  sections: Section[];
+  style: CVStyle;
+  metadata: CVMetadata;
+}
+
+// Extend HTMLElement for dataset typing
 interface HTMLElement {
   dataset: DOMStringMap & {
     category?: string;
