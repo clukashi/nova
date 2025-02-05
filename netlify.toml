@@ -9,3 +9,6 @@
 
 [dev]
   framework = "#static"
+
+[build.environment]
+  VITE_API_URL = "https://api.cvnova.com/v1"
