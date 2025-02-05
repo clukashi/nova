@@ -1,23 +1,17 @@
-interface Template {
-  id: string;
-  name: string;
-  category: 'tech' | 'creative' | 'executive';
-  optimized: boolean;
-  thumbnail: string;
+// src/types/global.d.ts
+interface ImportMetaEnv {
+  VITE_API_URL: string;
+  VITE_ENVIRONMENT: 'development' | 'production';
 }
 
-interface AISuggestion {
-  id: string;
-  message: string;
-  category: 'wording' | 'metrics' | 'formatting';
-  confidence: number;
-  accepted: boolean;
+interface ImportMeta {
+  env: ImportMetaEnv;
 }
 
-interface CVData {
-  sections: Section[];
-  style: CVStyle;
-  metadata: CVMetadata;
+// Add HTMLElement dataset types
+interface HTMLElement {
+  dataset: DOMStringMap & {
+    category?: string;
+    template?: string;
+  };
 }
-
-// Add other type definitions as needed
